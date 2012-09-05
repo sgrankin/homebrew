@@ -16,6 +16,7 @@ class Macvim < Formula
   depends_on 'cscope' => :recommended
   depends_on 'lua' => :optional
   depends_on 'luajit' => :optional
+  depends_on 'ruby' => :recommended
   depends_on :python => :recommended
   # Help us! :python3 in MacVim makes the window disappear, so only 2.x bindings!
 
