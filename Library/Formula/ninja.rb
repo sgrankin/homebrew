@@ -8,6 +8,8 @@ class Ninja < Formula
 
   depends_on :python
 
+  head 'https://github.com/martine/ninja.git'
+
   def install
     system python, "./bootstrap.py"
     bin.install "ninja"
