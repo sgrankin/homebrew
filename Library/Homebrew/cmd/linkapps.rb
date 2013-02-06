@@ -21,13 +21,13 @@ module Homebrew extend self
       Dir["#{keg}/*.app", "#{keg}/bin/*.app", "#{keg}/libexec/*.app"].each do |app|
         puts "Linking #{app}"
         app_name = File.basename(app)
-        target = "#{target_dir}/#{app_name}"
+        target = "#{target_dir}/#{app_name[/.*(?=\..+$)/]}"
 
-        if File.exist?(target) && !File.symlink?(target)
+        if File.exist?(target)
           onoe "#{target} already exists, skipping."
           next
         end
-        system "ln", "-sf", app, target_dir
+        system %{osascript -e 'tell application "Finder" to make alias file to POSIX file "#{app}" at POSIX file "#{target_dir}"'}
       end
     end
 
